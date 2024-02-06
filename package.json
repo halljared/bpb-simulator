@@ -1,0 +1,23 @@
+{
+  "name": "ts-test",
+  "version": "1.0.0",
+  "description": "Test of Node + Typescript",
+  "main": "src/main.ts",
+  "scripts": {
+    "start": "npx tsx ."
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.2",
+    "@types/node": "^20.11.16",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "mathjs": "^12.3.1",
+    "tsx": "^4.7.0"
+  }
+}
