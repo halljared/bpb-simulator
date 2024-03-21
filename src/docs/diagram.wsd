@@ -1,0 +1,11 @@
+@startuml test
+interface Stringable
+abstract Modifier<T> <<stringable>>
+abstract DerivedAttribute<T> <<stringable>> {
+  T baseValue
+  Modifier<T>[] modifiers
+}
+class ScalarAttribute
+class ScalarModifier
+DerivedAttribute <|-- ScalarAttribute :extends
+@enduml
