@@ -1,0 +1,18 @@
+@startuml test
+class GridObject
+interface Stringable
+interface Modifier<T> <<stringable>>
+abstract DerivedAttribute<T> <<stringable>> {
+  AttributeType: type
+}
+class ScalarAttribute
+class ScalarModifier
+class IncreaseModifier
+class MoreModifier
+enum AttributeType
+GridObject "1" *-- "many" DerivedAttribute
+DerivedAttribute <|-- ScalarAttribute
+DerivedAttribute <-- Modifier
+Modifier <|.. IncreaseModifier
+Modifier <|.. MoreModifier
+@enduml

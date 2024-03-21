@@ -1,0 +1,11 @@
+@startuml activation
+start
+:Before Object Activates;
+if (Object can activate) then (yes)
+  :Object Activates;
+  :After Object Activates;
+endif
+stop
+
+
+@enduml
