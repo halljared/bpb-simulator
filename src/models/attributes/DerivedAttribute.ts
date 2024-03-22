@@ -1,4 +1,4 @@
-import { AttributeType } from "@/models/attributes/Attributes";
+import { AttributeType } from "@/models/attributes/AttributeTypes";
 import { Modifier } from "@/models/modifiers/Modifier";
 
 export abstract class DerivedAttribute<T> {

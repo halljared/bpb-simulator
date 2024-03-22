@@ -2,10 +2,12 @@
 start
 :Before Object Activates;
 if (Object can activate) then (yes)
-  :Object Activates;
+  if (Conditional activation and condition or not conditional activation) then (yes)
+    :Object Activates;
+  endif
+endif
+if(Object activated) then (yes)
   :After Object Activates;
 endif
 stop
-
-
 @enduml

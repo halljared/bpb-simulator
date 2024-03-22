@@ -1,4 +1,4 @@
-import { AttributeType } from "@/models/attributes/Attributes";
+import { AttributeType } from "@/models/attributes/AttributeTypes";
 import { DerivedAttribute } from "@/models/attributes/DerivedAttribute";
 
 export class ScalarAttribute extends DerivedAttribute<number> {

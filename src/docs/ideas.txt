@@ -1,0 +1,3 @@
+items create artifacts when they activate
+artifacts are then passed around to be modified before they resolve
+artifacts and potentially all of the game can be reduced to bags of attributes and modifiers

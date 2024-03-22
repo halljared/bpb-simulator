@@ -1,17 +1,27 @@
+import { AttributeCollection } from "@/models/attributes/AttributeCollection";
 import { Coord } from "@/models/utility/Coord";
 import { GridConfig, translateGridToText } from "@/models/utility/GridConfig";
 import { GridObjectTemplate } from "@/models/utility/GridObjectTemplate";
 import { Rotation } from "@/models/utility/Rotation";
 import * as math from "mathjs";
-export class GridObject {
+
+abstract class AttributeMixin extends AttributeCollection {}
+
+export class GridObject extends AttributeMixin {
+  attributes = [];
   rotation = Rotation.NONE;
   location: Coord[][] = [];
   baseGridConfig: GridConfig;
   gridConfig: GridConfig;
   constructor(template: GridObjectTemplate) {
+    super();
     this.baseGridConfig = template.gridConfig;
     this.gridConfig = JSON.parse(JSON.stringify(this.baseGridConfig));
   }
+  /**
+   * rotates the object by transposing it then reversing column order
+   * see https://math.stackexchange.com/questions/1676441/how-to-rotate-the-positions-of-a-matrix-by-90-degrees
+   */
   rotate() {
     function generateMatrix(m:number, n:number): number[][] {
       let rows: number[][] = [];

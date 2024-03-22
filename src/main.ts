@@ -1,4 +1,4 @@
-import { AttributeType } from "@/models/attributes/Attributes";
+import { AttributeType } from "@/models/attributes/AttributeTypes";
 import { ScalarAttribute } from "@/models/attributes/ScalarAttribute";
 import { Banana } from "@/models/items/Banana";
 import { FlatModifier } from "@/models/modifiers/FlatModifier";
@@ -21,4 +21,5 @@ attr1.addModifier(mod2);
 attr1.addModifier(mod3);
 attr1.addModifier(mod4);
 attr1.addModifier(mod5);
+x.addAttribute(attr1);
 console.log(attr1.evaluate());
