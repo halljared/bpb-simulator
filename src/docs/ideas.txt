@@ -1,3 +1,9 @@
 items create artifacts when they activate
 artifacts are then passed around to be modified before they resolve
 artifacts and potentially all of the game can be reduced to bags of attributes and modifiers
+
+piercing arrow problem:
+  buff gives * weapons: 'on hit: remove X block'
+  this type of buff isn't clearly reduceable to a attribute
+  e.g. removeArmorOnHit(X)
+  it could subscribe to hit events from the weapon 

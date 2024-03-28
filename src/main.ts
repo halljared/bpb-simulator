@@ -6,20 +6,20 @@ import { IncreaseModifier } from "@/models/modifiers/IncreaseModifier";
 import { MoreModifier } from "@/models/modifiers/MoreModifier";
 import { translateGridToText } from "@/models/utility/GridConfig";
 
-let x = new Banana();
-console.log(translateGridToText(x.gridConfig));
-x.rotate();
+let banana = new Banana();
+console.log(translateGridToText(banana.gridConfig));
+banana.rotate();
 
+let attr1 = new ScalarAttribute(10, AttributeType.COOLDOWN);
 let mod1 = new IncreaseModifier(50);
 let mod2 = new IncreaseModifier(50);
 let mod3 = new MoreModifier(50);
 let mod4 = new FlatModifier(5);
 let mod5 = new FlatModifier(8);
-let attr1 = new ScalarAttribute(10, AttributeType.COOLDOWN);
 attr1.addModifier(mod1);
 attr1.addModifier(mod2);
 attr1.addModifier(mod3);
 attr1.addModifier(mod4);
 attr1.addModifier(mod5);
-x.addAttribute(attr1);
+banana.addAttribute(attr1);
 console.log(attr1.evaluate());

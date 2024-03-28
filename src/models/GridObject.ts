@@ -19,7 +19,7 @@ export class GridObject extends AttributeMixin {
     this.gridConfig = JSON.parse(JSON.stringify(this.baseGridConfig));
   }
   /**
-   * rotates the object by transposing it then reversing column order
+   * rotates the object by transposing it and reversing column order
    * see https://math.stackexchange.com/questions/1676441/how-to-rotate-the-positions-of-a-matrix-by-90-degrees
    */
   rotate() {
