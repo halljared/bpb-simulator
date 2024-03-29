@@ -1,3 +1,6 @@
+import { Context } from "@/Context";
+import { Board } from "@/models/Board";
+import { Player } from "@/models/Player";
 import { AttributeType } from "@/models/attributes/AttributeTypes";
 import { ScalarAttribute } from "@/models/attributes/ScalarAttribute";
 import { Banana } from "@/models/items/Banana";
@@ -22,4 +25,11 @@ attr1.addModifier(mod3);
 attr1.addModifier(mod4);
 attr1.addModifier(mod5);
 banana.addAttribute(attr1);
+const board = new Board();
+const player = new Player(board);
+const context = new Context();
+board.placeItem(banana);
+player.update(5, context);
+board.update(5, context);
+
 console.log(attr1.evaluate());

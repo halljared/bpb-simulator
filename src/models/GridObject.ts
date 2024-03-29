@@ -8,7 +8,6 @@ import * as math from "mathjs";
 abstract class AttributeMixin extends AttributeCollection {}
 
 export class GridObject extends AttributeMixin {
-  attributes = [];
   rotation = Rotation.NONE;
   location: Coord[][] = [];
   baseGridConfig: GridConfig;

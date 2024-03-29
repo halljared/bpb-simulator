@@ -1,9 +1,9 @@
 export enum BuffType {
-  LUCK,
-  THORN,
-  REGEN,
-  VAMP,
-  MANA,
-  HEAT,
-  EMPOWER
+  LUCK = "LUCK",
+  THORN = "THORN",
+  REGEN = "REGEN",
+  VAMP = "VAMP",
+  MANA = "MANA",
+  HEAT = "HEAT",
+  EMPOWER = "EMPOWER"
 }

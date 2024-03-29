@@ -1,6 +1,10 @@
+import { Context } from "@/Context";
 import { Item } from "@/models/Item";
+import { Artifact } from "@/models/atrifacts/Artifact";
+import { BuffArtifact } from "@/models/atrifacts/Buff";
 import items from "@/models/items/itemGrids.json"
-import { GridConfig, translateJsonGrid } from "@/models/utility/GridConfig";
+import { BuffType } from "@/models/utility/BuffTypes";
+import { translateJsonGrid } from "@/models/utility/GridConfig";
 import { ItemTemplate } from "@/models/utility/ItemTemplate";
 
 export class Banana extends Item {
@@ -12,5 +16,9 @@ export class Banana extends Item {
       gridConfig: bananaGrid
     }
     super(bananaConfig);
+  }
+  update(dt: number, context: Context): Artifact[] {
+    console.log('Update: Banana');
+    return [new BuffArtifact(BuffType.EMPOWER, 1)];
   }
 }
