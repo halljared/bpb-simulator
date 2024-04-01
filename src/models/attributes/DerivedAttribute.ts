@@ -11,8 +11,8 @@ export abstract class DerivedAttribute<T> {
   abstract evaluate() : T;
 
   addModifier(mod: Modifier<T>): void {
-    let name = mod.constructor.name;
-    let current = this.modifiers[name];
+    const name = mod.constructor.name,
+      current = this.modifiers[name];
     if(current) {
       current.push(mod);
     } else {

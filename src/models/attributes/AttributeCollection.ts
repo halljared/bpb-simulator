@@ -1,3 +1,4 @@
+import { AttributeType } from "@/models/attributes/AttributeTypes";
 import { DerivedAttribute } from "@/models/attributes/DerivedAttribute";
 
 
@@ -7,8 +8,15 @@ import { DerivedAttribute } from "@/models/attributes/DerivedAttribute";
  * attributes and management functions for those attributes
  */
 export abstract class AttributeCollection {
-  private attributes: DerivedAttribute<any>[] = [];
+  // private attributes: DerivedAttribute<any>[] = [];
+  private attributes: { [key in AttributeType]?: DerivedAttribute<any>[] } = {};
   addAttribute(attr: DerivedAttribute<any>): void {
-    this.attributes.push(attr);
+    const type = attr.type,
+      current = this.attributes[type];
+    if(current) {
+      current.push(attr);
+    } else {
+      this.attributes[type] = [attr];
+    }
   }
 }
