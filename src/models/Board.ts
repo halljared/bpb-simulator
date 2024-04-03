@@ -16,12 +16,7 @@ export class Board {
   }
   update(dt: number, context: Context) {
     for (let i = 0; i < this.items.length; i++) {
-      const item = this.items[i];
-      const artifacts = item.update(dt, context);
-      for (let j = 0; j < artifacts.length; j++) {
-        const artifact = artifacts[j];
-        this.artifactResolver.resolve(artifact, context);
-      }
+      const item = this.items[i].update(dt, context);
     }
   }
 }

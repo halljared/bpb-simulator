@@ -2,8 +2,6 @@ import { Context } from "@/Context";
 import { Item } from "@/models/Item";
 import { Artifact } from "@/models/atrifacts/Artifact";
 import { BuffArtifact } from "@/models/atrifacts/Buff";
-import { AttributeType } from "@/models/attributes/AttributeTypes";
-import { ScalarAttribute } from "@/models/attributes/ScalarAttribute";
 import items from "@/models/items/itemGrids.json"
 import { BuffType } from "@/models/utility/BuffTypes";
 import { translateJsonGrid } from "@/models/utility/GridConfig";
@@ -19,8 +17,8 @@ export class Banana extends Item {
     }
     super(bananaConfig);
   }
-  update(dt: number, context: Context): Artifact[] {
+  update(dt: number, context: Context): void {
     console.log('Update: Banana');
-    return [new BuffArtifact(BuffType.EMPOWER, 1)];
+    this.emitArtifact(new BuffArtifact(BuffType.EMPOWER, 1), context);
   }
 }

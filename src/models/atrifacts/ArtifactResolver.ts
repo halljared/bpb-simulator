@@ -11,6 +11,7 @@ export class ArtifactResolver {
     artifact.acceptResolve(this, context);
   }
   resolveBuff(buff: BuffArtifact, context: Context): void {
+    Context.buffs.next(buff);
     console.log(`Resolve: Buff ${buff.amount.evaluate()} ${buff.type}`)
   }
 }

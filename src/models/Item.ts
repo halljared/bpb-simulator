@@ -9,5 +9,8 @@ export abstract class Item extends GridObject {
     super(template);
     this.baseCooldown = template.cooldown;
   }
-  abstract update(dt: number, context: Context): Artifact[];
+  abstract update(dt: number, context: Context): void;
+  emitArtifact(artifact: Artifact, context: Context): void {
+    Context.artifactResolver.resolve(artifact, context);
+  }
 }

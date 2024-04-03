@@ -30,26 +30,24 @@ attr1.addModifier(flat5);
 attr1.addModifier(mod5);
 banana.addAttribute(attr1);
 const board = new Board();
-const player = new Player(board);
-const context = new Context();
+const player1 = new Player(board);
+const board2 = new Board();
+const player2 = new Player(board2);
+Context.initialize();
+const context = new Context(player1, player2);
 board.placeItem(banana);
-player.update(5, context);
-board.update(5, context);
-const buff = new BuffArtifact(BuffType.EMPOWER, 1);
-context.artifacts.subscribe((artifact) => {
+player1.update(5, context);
+Context.artifacts.subscribe((artifact) => {
   console.log('Receive: Artifact');
 });
-context.buffs.subscribe((buff) => {
+Context.buffs.subscribe((buff) => {
   console.log('Receive: Buff');
   buff.amount.addModifier(flat5);
 })
-const filtered = context.artifacts.pipe(
+const filtered = Context.artifacts.pipe(
   filter((val) => val.constructor == BuffArtifact)
 );
 filtered.subscribe((artifact) => {
   console.log('Receive: Filtered Artifact');
 });
-context.buffs.next(buff);
-console.log(buff.amount.evaluate());
-
-// console.log(attr1.evaluate());
+board.update(5, context);
