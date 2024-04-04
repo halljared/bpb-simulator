@@ -1,3 +1,4 @@
+import { Player } from "@/models/Player";
 import { AttributeCollection } from "@/models/attributes/AttributeCollection";
 import { Coord } from "@/models/utility/Coord";
 import { GridConfig, translateGridToText } from "@/models/utility/GridConfig";
@@ -12,6 +13,7 @@ export class GridObject extends AttributeMixin {
   location: Coord[][] = [];
   baseGridConfig: GridConfig;
   gridConfig: GridConfig;
+  owner: Player | undefined;
   constructor(template: GridObjectTemplate) {
     super();
     this.baseGridConfig = template.gridConfig;

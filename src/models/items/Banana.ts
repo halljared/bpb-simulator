@@ -1,10 +1,7 @@
 import { Context } from "@/Context";
 import { Item } from "@/models/items/Item";
 import { BuffArtifact } from "@/models/atrifacts/Buff";
-import items from "@/models/items/itemGrids.json"
 import { BuffType } from "@/models/utility/BuffTypes";
-import { translateJsonGrid } from "@/models/utility/GridConfig";
-import { ItemTemplate } from "@/models/utility/ItemTemplate";
 
 export class Banana extends Item {
   constructor() {

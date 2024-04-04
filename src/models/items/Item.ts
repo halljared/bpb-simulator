@@ -6,7 +6,7 @@ import items from "@/models/items/itemGrids.json"
 import { translateJsonGrid } from "@/models/utility/GridConfig";
 
 export abstract class Item extends GridObject {
-  baseCooldown: number;
+  baseCooldown: number | undefined;
   constructor(template: ItemTemplate) {
     super(template);
     this.baseCooldown = template.cooldown;
@@ -15,7 +15,7 @@ export abstract class Item extends GridObject {
     let itemJSON = items[key];
     let itemGrid = translateJsonGrid(itemJSON.grid);
     const template : ItemTemplate = {
-      cooldown: itemJSON.cooldown,
+      ...itemJSON,
       gridConfig: itemGrid
     };
     return template;
@@ -30,5 +30,5 @@ export abstract class Item extends GridObject {
   emitArtifact(artifact: Artifact, context: Context): void {
     Context.artifactResolver.resolve(artifact, context);
   }
-  
+  placed?(): void;
 }

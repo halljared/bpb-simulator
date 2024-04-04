@@ -7,12 +7,14 @@ export class Board {
   width: number = 9;
   items: Item[] = [];
   artifactResolver: ArtifactResolver = new ArtifactResolver();
-  constructor() {
+  constructor(
+    public context: Context
+  ) {
     
   }
   placeItem(item: Item) {
-    //temporary implementation as scaffolding
     this.items.push(item);
+    item.placed && item.placed();
   }
   update(dt: number, context: Context) {
     for (let i = 0; i < this.items.length; i++) {

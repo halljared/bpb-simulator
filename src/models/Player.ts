@@ -9,10 +9,14 @@ abstract class AttributeMixin extends AttributeCollection {}
 export class Player extends AttributeMixin {
   private items: Item[] = [];
   private bags: Bag[] = [];
-  constructor(private board: Board) {
+  private board: Board | undefined;
+  constructor() {
     super();
   }
 
+  setBoard(board: Board): void { 
+    this.board = board;
+  }
   addItem(item: Item): void {
     this.items.push(item);
   }
