@@ -1,7 +1,7 @@
 import { Context } from "@/Context";
 import { Bag } from "@/models/Bag";
 import { Board } from "@/models/Board";
-import { Item } from "@/models/Item";
+import { Item } from "@/models/items/Item";
 import { AttributeCollection } from "@/models/attributes/AttributeCollection";
 
 abstract class AttributeMixin extends AttributeCollection {}

@@ -1,5 +1,5 @@
 import { Context } from "@/Context";
-import { Item } from "@/models/Item";
+import { Item } from "@/models/items/Item";
 import { ArtifactResolver } from "@/models/atrifacts/ArtifactResolver";
 
 export class Board {

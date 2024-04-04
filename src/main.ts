@@ -6,6 +6,7 @@ import { BuffArtifact } from "@/models/atrifacts/Buff";
 import { AttributeType } from "@/models/attributes/AttributeTypes";
 import { ScalarAttribute } from "@/models/attributes/ScalarAttribute";
 import { Banana } from "@/models/items/Banana";
+import { WoodenSword } from "@/models/items/weapons/WoodenSword";
 import { FlatModifier } from "@/models/modifiers/FlatModifier";
 import { IncreaseModifier } from "@/models/modifiers/IncreaseModifier";
 import { MoreModifier } from "@/models/modifiers/MoreModifier";
@@ -14,6 +15,7 @@ import { translateGridToText } from "@/models/utility/GridConfig";
 import { filter } from "rxjs";
 
 let banana = new Banana();
+let sword = new WoodenSword();
 // console.log(translateGridToText(banana.gridConfig));
 // banana.rotate();
 
@@ -29,13 +31,14 @@ attr1.addModifier(mod3);
 attr1.addModifier(flat5);
 attr1.addModifier(mod5);
 banana.addAttribute(attr1);
-const board = new Board();
-const player1 = new Player(board);
+const board1 = new Board();
+const player1 = new Player(board1);
 const board2 = new Board();
 const player2 = new Player(board2);
 Context.initialize();
 const context = new Context(player1, player2);
-board.placeItem(banana);
+board1.placeItem(banana);
+board1.placeItem(sword);
 player1.update(5, context);
 Context.artifacts.subscribe((artifact) => {
   console.log('Receive: Artifact');
@@ -50,4 +53,4 @@ const filtered = Context.artifacts.pipe(
 filtered.subscribe((artifact) => {
   console.log('Receive: Filtered Artifact');
 });
-board.update(5, context);
+board1.update(5, context);
