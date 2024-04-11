@@ -9,7 +9,6 @@ import { WoodenShield } from "@/models/items/WoodenShield";
 import { WoodenSword } from "@/models/items/weapons/WoodenSword";
 import { FlatModifier } from "@/models/modifiers/FlatModifier";
 import { IncreaseModifier } from "@/models/modifiers/IncreaseModifier";
-import { MoreModifier } from "@/models/modifiers/MoreModifier";
 import { filter } from "rxjs";
 
 let banana = new Banana();
@@ -18,18 +17,22 @@ let shield = new WoodenShield();
 // console.log(translateGridToText(banana.gridConfig));
 // banana.rotate();
 
+let seed_attr = new ScalarAttribute(5, AttributeType.EMPOWER);
+let flat1 = new FlatModifier(1);
+seed_attr.addModifier(flat1);
 let attr1 = new ScalarAttribute(10, AttributeType.COOLDOWN);
 let mod1 = new IncreaseModifier(50);
 let mod2 = new IncreaseModifier(50);
-let mod3 = new MoreModifier(50);
-let flat5 = new FlatModifier(5);
-let mod5 = new FlatModifier(8);
+//testing passing a random attribute value as a flat modifier value
+//e.g. 5 int gives +5 mana
+let flat_seed = new FlatModifier(() => { return seed_attr.evaluate(); });
+let flat8 = new FlatModifier(8);
 attr1.addModifier(mod1);
 attr1.addModifier(mod2);
-attr1.addModifier(mod3);
-attr1.addModifier(flat5);
-attr1.addModifier(mod5);
+attr1.addModifier(flat_seed);
+attr1.addModifier(flat8);
 banana.addAttribute(attr1);
+console.log(attr1.evaluate());
 Context.initialize();
 const player1 = new Player();
 const player2 = new Player();
@@ -51,7 +54,7 @@ Context.artifacts.subscribe((artifact) => {
 });
 Context.buffs.subscribe((buff) => {
   console.log('Receive: Buff');
-  buff.amount.addModifier(flat5);
+  buff.amount.addModifier(flat8);
 })
 const filtered = Context.artifacts.pipe(
   filter((val) => val.constructor == BuffArtifact)

@@ -1,0 +1,2 @@
+Damage types + resulting ailments and effects
+  shock, bleed, poison, etc

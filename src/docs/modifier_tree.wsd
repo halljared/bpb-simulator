@@ -1,0 +1,34 @@
+@startuml modifier_tree
+object global_modifier1
+object global_modifier2
+object modifier1
+object modifier2
+object modifier3
+object modifier4
+object modifier5
+object modifier6
+object modifier7
+object modifier8
+object intelligence <<attribute>>
+object maximum_mana <<attribute>>
+object mana_modifier <<calc_modifier>>
+mana_modifier --> intelligence : depends_on
+mana_modifier --> maximum_mana : modifies
+maximum_mana --> mana_modifier : modified_by
+modifier1 --> modifier2 : modifies
+modifier2 --> modifier1 : modified_by
+global_modifier1 --> modifier2 : modifies
+modifier2 --> global_modifier1 : modified_by
+global_modifier2 --> modifier2 : modifies
+modifier2 --> global_modifier2 : modified_by
+global_modifier1 --> modifier3 : modifies
+modifier3 --> global_modifier1 : modified_by
+global_modifier2 --> modifier3 : modifies
+modifier3 --> global_modifier2 : modified_by
+global_modifier1 --> modifier3 : modifies
+modifier4 --> global_modifier1 : modified_by
+global_modifier2 --> modifier4 : modifies
+modifier4 --> global_modifier2 : modified_by
+global_modifier1 --> intelligence : modifies
+intelligence --> global_modifier1 : modified_by
+@enduml

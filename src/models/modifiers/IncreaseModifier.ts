@@ -5,7 +5,7 @@ export class IncreaseModifier extends NumberModifier {
     super();
   }
   apply(base: number, mods: IncreaseModifier[]): number {
-    return base * (1 + this.combine(mods) / 100)
+    return NumberModifier.applyIncreaseModifiers(base, mods);
   }
 }
 
