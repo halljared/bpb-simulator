@@ -1,7 +1,7 @@
-import { NumberModifier } from "@/models/modifiers/NumberModifier";
+import { ScalarModifier } from "@/models/modifiers/ScalarModifier";
 
-export class FlatModifier extends NumberModifier {
+export class FlatModifier extends ScalarModifier {
   apply(base: number, mods: FlatModifier[]): number {
-    return NumberModifier.applyFlatModifiers(base, mods);
+    return ScalarModifier.applyFlatModifiers(base, mods);
   }
 }

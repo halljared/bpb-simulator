@@ -1,13 +1,13 @@
 import { ValueType } from "@/models/values/ValueTypes";
 import { DerivedValue } from "@/models/values/DerivedValue";
-import { NumberModifier } from "@/models/modifiers/NumberModifier";
+import { ScalarModifier } from "@/models/modifiers/ScalarModifier";
 
 export class ScalarValue extends DerivedValue<number> {
-  modifiers: { [key: string]: NumberModifier[]; } = {};
+  modifiers: { [key: string]: ScalarModifier[]; } = {};
   constructor(val: number | (() => number), public type: ValueType) {
     super(val);
   }
-  addModifier(mod: NumberModifier): void {
+  addModifier(mod: ScalarModifier): void {
     const name = mod.constructor.name,
       current = this.modifiers[name];
     if(current) {
@@ -20,7 +20,7 @@ export class ScalarValue extends DerivedValue<number> {
     let current = this.baseValue;
     for(const key in this.modifiers) {
       const modifiers = this.modifiers[key];
-      current = NumberModifier.apply(current, modifiers);
+      current = ScalarModifier.apply(current, modifiers);
     }
     return current;
   }
