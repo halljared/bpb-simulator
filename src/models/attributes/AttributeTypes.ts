@@ -2,5 +2,6 @@ export enum AttributeType {
   COOLDOWN,
   STAMINA,
   EMPOWER,
-  DAMAGE
+  DAMAGE,
+  MODIFIER
 }

@@ -1,35 +1,22 @@
 @startuml test
-class GridObject {
-  activate(): Artifact
-  attributes: DerivedAttribute[]
+class DerivedValueCollection {
+  vals: {key: DerivedValue<any>}
 }
-interface Stringable
-interface Modifier<T> <<stringable>>
-abstract DerivedAttribute<T> <<stringable>> {
-  AttributeType: type
+abstract Modifier<T> {
+  val: DerivedValue
+  modifies: AttributeType[]
+}
+abstract DerivedValue<T> {
+  label: DerivedValueType
   baseValue: T
-  Modifier[]: modifiers
-}
-class Player {
-  attributes: DerivedAttribute[]
-}
-class Artifact {
-  attributes: DerivedAttribute[]
-  resolve(): void
+  modifiedBy: Modifier<T>[]
+  evaluate(): T
 }
 class ScalarAttribute
 class ScalarModifier
-class IncreaseModifier
-class MoreModifier
-enum AttributeType
-GridObject *-- DerivedAttribute
-DerivedAttribute <|-- ScalarAttribute
-DerivedAttribute <-- Modifier
-Modifier <|.. IncreaseModifier
-Modifier <|.. MoreModifier
-GridObject <-- Artifact
-Artifact <-- DerivedAttribute
-Artifact <-- Artifact : arbitrary processing
-Player <-- DerivedAttribute
-note "Make an interface for objects that have an\narray of attributes, 'AttributeGag'" as N1
+enum DerivedValueType
+DerivedValue <|-- ScalarAttribute
+DerivedValue <-- Modifier
+Modifier <|-- ScalarModifier
+DerivedValueCollection *-- DerivedValue
 @enduml

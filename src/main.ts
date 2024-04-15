@@ -18,15 +18,15 @@ let shield = new WoodenShield();
 // banana.rotate();
 
 let seed_attr = new ScalarAttribute(5, AttributeType.EMPOWER);
-let flat1 = new FlatModifier(1);
+let flat1 = new FlatModifier(new ScalarAttribute(1, AttributeType.MODIFIER));
 seed_attr.addModifier(flat1);
 let attr1 = new ScalarAttribute(10, AttributeType.COOLDOWN);
-let mod1 = new IncreaseModifier(50);
-let mod2 = new IncreaseModifier(50);
+let mod1 = new IncreaseModifier(new ScalarAttribute(50, AttributeType.MODIFIER));
+let mod2 = new IncreaseModifier(new ScalarAttribute(50, AttributeType.MODIFIER));
 //testing passing a random attribute value as a flat modifier value
 //e.g. 5 int gives +5 mana
-let flat_seed = new FlatModifier(() => { return seed_attr.evaluate(); });
-let flat8 = new FlatModifier(8);
+let flat_seed = new FlatModifier(new ScalarAttribute(() => { return seed_attr.evaluate(); }, AttributeType.MODIFIER));
+let flat8 = new FlatModifier(new ScalarAttribute(8, AttributeType.MODIFIER));
 attr1.addModifier(mod1);
 attr1.addModifier(mod2);
 attr1.addModifier(flat_seed);

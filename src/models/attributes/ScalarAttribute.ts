@@ -4,8 +4,8 @@ import { NumberModifier } from "@/models/modifiers/NumberModifier";
 
 export class ScalarAttribute extends DerivedAttribute<number> {
   modifiers: { [key: string]: NumberModifier[]; } = {};
-  constructor(public baseValue: number, public type: AttributeType) {
-    super();
+  constructor(val: number | (() => number), public type: AttributeType) {
+    super(val);
   }
   addModifier(mod: NumberModifier): void {
     const name = mod.constructor.name,
