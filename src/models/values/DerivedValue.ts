@@ -1,8 +1,8 @@
-import { AttributeType } from "@/models/attributes/AttributeTypes";
+import { ValueType } from "@/models/values/ValueTypes";
 import { Modifier } from "@/models/modifiers/Modifier";
 
-export abstract class DerivedAttribute<T> {
-  abstract type: AttributeType;
+export abstract class DerivedValue<T> {
+  abstract type: ValueType;
   private _val: T | undefined;
   private source?: () => T;
   public get baseValue(): T { return this.source && this.source() || this._val as T } // evaluates the source or returns _val

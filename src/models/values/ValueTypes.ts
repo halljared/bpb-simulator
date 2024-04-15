@@ -1,4 +1,4 @@
-export enum AttributeType {
+export enum ValueType {
   COOLDOWN,
   STAMINA,
   EMPOWER,

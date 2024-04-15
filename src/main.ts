@@ -2,8 +2,8 @@ import { Context } from "@/Context";
 import { Board } from "@/models/Board";
 import { Player } from "@/models/Player";
 import { BuffArtifact } from "@/models/atrifacts/Buff";
-import { AttributeType } from "@/models/attributes/AttributeTypes";
-import { ScalarAttribute } from "@/models/attributes/ScalarAttribute";
+import { ValueType } from "@/models/values/ValueTypes";
+import { ScalarValue } from "@/models/values/ScalarValue";
 import { Banana } from "@/models/items/Banana";
 import { WoodenShield } from "@/models/items/WoodenShield";
 import { WoodenSword } from "@/models/items/weapons/WoodenSword";
@@ -17,16 +17,16 @@ let shield = new WoodenShield();
 // console.log(translateGridToText(banana.gridConfig));
 // banana.rotate();
 
-let seed_attr = new ScalarAttribute(5, AttributeType.EMPOWER);
-let flat1 = new FlatModifier(new ScalarAttribute(1, AttributeType.MODIFIER));
+let seed_attr = new ScalarValue(5, ValueType.EMPOWER);
+let flat1 = new FlatModifier(new ScalarValue(1, ValueType.MODIFIER));
 seed_attr.addModifier(flat1);
-let attr1 = new ScalarAttribute(10, AttributeType.COOLDOWN);
-let mod1 = new IncreaseModifier(new ScalarAttribute(50, AttributeType.MODIFIER));
-let mod2 = new IncreaseModifier(new ScalarAttribute(50, AttributeType.MODIFIER));
+let attr1 = new ScalarValue(10, ValueType.COOLDOWN);
+let mod1 = new IncreaseModifier(new ScalarValue(50, ValueType.MODIFIER));
+let mod2 = new IncreaseModifier(new ScalarValue(50, ValueType.MODIFIER));
 //testing passing a random attribute value as a flat modifier value
 //e.g. 5 int gives +5 mana
-let flat_seed = new FlatModifier(new ScalarAttribute(() => { return seed_attr.evaluate(); }, AttributeType.MODIFIER));
-let flat8 = new FlatModifier(new ScalarAttribute(8, AttributeType.MODIFIER));
+let flat_seed = new FlatModifier(new ScalarValue(() => { return seed_attr.evaluate(); }, ValueType.MODIFIER));
+let flat8 = new FlatModifier(new ScalarValue(8, ValueType.MODIFIER));
 attr1.addModifier(mod1);
 attr1.addModifier(mod2);
 attr1.addModifier(flat_seed);

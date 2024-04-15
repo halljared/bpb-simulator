@@ -1,6 +1,6 @@
 import { Context } from "@/Context";
-import { AttributeType } from "@/models/attributes/AttributeTypes";
-import { ScalarAttribute } from "@/models/attributes/ScalarAttribute";
+import { ValueType } from "@/models/values/ValueTypes";
+import { ScalarValue } from "@/models/values/ScalarValue";
 import { Item } from "@/models/items/Item";
 import { FlatModifier } from "@/models/modifiers/FlatModifier";
 
@@ -17,7 +17,7 @@ export class WoodenShield extends Item {
     console.log('Placed: WoodenShield');
     Context.damages.subscribe((damage) => {
       if(damage.target == this.owner) {
-        const mod = new FlatModifier(new ScalarAttribute(-1, AttributeType.MODIFIER));
+        const mod = new FlatModifier(new ScalarValue(-1, ValueType.MODIFIER));
         damage.amount.addModifier(mod);
       }
     });

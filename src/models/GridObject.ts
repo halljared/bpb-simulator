@@ -1,12 +1,12 @@
 import { Player } from "@/models/Player";
-import { AttributeCollection } from "@/models/attributes/AttributeCollection";
+import { ValueCollection } from "@/models/values/ValueCollection";
 import { Coord } from "@/models/utility/Coord";
 import { GridConfig, translateGridToText } from "@/models/utility/GridConfig";
 import { GridObjectTemplate } from "@/models/utility/GridObjectTemplate";
 import { Rotation } from "@/models/utility/Rotation";
 import * as math from "mathjs";
 
-abstract class AttributeMixin extends AttributeCollection {}
+abstract class AttributeMixin extends ValueCollection {}
 
 export class GridObject extends AttributeMixin {
   rotation = Rotation.NONE;

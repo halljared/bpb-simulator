@@ -2,9 +2,9 @@ import { Context } from "@/Context";
 import { Bag } from "@/models/Bag";
 import { Board } from "@/models/Board";
 import { Item } from "@/models/items/Item";
-import { AttributeCollection } from "@/models/attributes/AttributeCollection";
+import { ValueCollection } from "@/models/values/ValueCollection";
 
-abstract class AttributeMixin extends AttributeCollection {}
+abstract class AttributeMixin extends ValueCollection {}
 
 export class Player extends AttributeMixin {
   private items: Item[] = [];

@@ -1,10 +1,10 @@
-import { AttributeType } from "@/models/attributes/AttributeTypes";
-import { DerivedAttribute } from "@/models/attributes/DerivedAttribute";
+import { ValueType } from "@/models/values/ValueTypes";
+import { DerivedValue } from "@/models/values/DerivedValue";
 import { NumberModifier } from "@/models/modifiers/NumberModifier";
 
-export class ScalarAttribute extends DerivedAttribute<number> {
+export class ScalarValue extends DerivedValue<number> {
   modifiers: { [key: string]: NumberModifier[]; } = {};
-  constructor(val: number | (() => number), public type: AttributeType) {
+  constructor(val: number | (() => number), public type: ValueType) {
     super(val);
   }
   addModifier(mod: NumberModifier): void {

@@ -1,4 +1,4 @@
-import { DerivedAttribute } from "@/models/attributes/DerivedAttribute";
+import { DerivedValue } from "@/models/values/DerivedValue";
 
 export abstract class Modifier<T> {
   abstract val: T;

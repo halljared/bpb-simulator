@@ -1,13 +1,13 @@
-import { ScalarAttribute } from "@/models/attributes/ScalarAttribute";
+import { ScalarValue } from "@/models/values/ScalarValue";
 import { FlatModifier } from "@/models/modifiers/FlatModifier";
 import { IncreaseModifier } from "@/models/modifiers/IncreaseModifier";
 import { Modifier } from "@/models/modifiers/Modifier";
 
 export abstract class NumberModifier extends Modifier<number> {
-  private _val: ScalarAttribute;
+  private _val: ScalarValue;
   public get val(): number { return this._val.evaluate(); }
 
-  constructor(val: ScalarAttribute) {
+  constructor(val: ScalarValue) {
     super();
     this._val = val;
   }
