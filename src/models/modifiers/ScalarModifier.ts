@@ -1,21 +1,19 @@
-import { ScalarValue } from "@/models/values/ScalarValue";
 import { FlatModifier } from "@/models/modifiers/FlatModifier";
 import { IncreaseModifier } from "@/models/modifiers/IncreaseModifier";
 import { Modifier } from "@/models/modifiers/Modifier";
 
 export abstract class ScalarModifier extends Modifier<number> {
-  private _val: ScalarValue;
-  public get val(): number { return this._val.evaluate(); }
-
-  constructor(val: ScalarValue) {
-    super();
-    this._val = val;
-  }
   static combine(mods: ScalarModifier[]): number {
       return mods.reduce((acc, cur) => {
         return acc + cur.val;
       }, 0);
   }
+  /**
+   * 
+   * @param base 
+   * @param mods Note: mods must be of the same class eg flat or increase
+   * @returns 
+   */
   static apply(base: number, mods: ScalarModifier[]): number {
     const mod = mods[0];
     let current = base;
