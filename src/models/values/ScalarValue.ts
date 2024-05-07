@@ -6,6 +6,9 @@ export class ScalarValue extends DerivedValue<number> {
   constructor(val: number | (() => number), public type: ValueType) {
     super(val);
   }
+  public modifiableByScalar(): boolean {
+    return true;    
+  }
   evaluate(): number {
     let current = this.baseValue;
     for(const key in this.modifiers) {

@@ -10,6 +10,8 @@ import { WoodenSword } from "@/models/items/weapons/WoodenSword";
 import { FlatModifier } from "@/models/modifiers/FlatModifier";
 import { IncreaseModifier } from "@/models/modifiers/IncreaseModifier";
 import { filter } from "rxjs";
+import { ValueModifierManager } from "@/models/ValueModifierManager";
+import { strict as assert } from 'assert';
 
 let banana = new Banana();
 let sword = new WoodenSword();
@@ -32,7 +34,8 @@ attr1.addModifier(mod2);
 attr1.addModifier(flat_seed);
 attr1.addModifier(flat8);
 banana.addAttribute(attr1);
-console.log(attr1.evaluate());
+assert.equal(attr1.evaluate(), 34);
+
 Context.initialize();
 const player1 = new Player();
 const player2 = new Player();
@@ -63,3 +66,13 @@ filtered.subscribe((artifact) => {
   console.log('Receive: Filtered Artifact');
 });
 board1.update(5, context1);
+const val1 = new ScalarValue(1, ValueType.COOLDOWN);
+const val2 = new ScalarValue(2, ValueType.COOLDOWN);
+const manager = new ValueModifierManager((val, mod) => { return val === val1 });
+manager.addModifier(mod1);
+manager.addValue(val1);
+manager.addValue(val2);
+assert.ok(mod1.modifies.indexOf(val1) >= 0);
+assert.ok(mod1.modifies.indexOf(val2) == -1);
+manager.removeValue(val1);
+assert.ok(mod1.modifies.indexOf(val1) >= -1);

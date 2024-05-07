@@ -17,7 +17,8 @@ export abstract class DerivedValue<T> {
     [key: string]: Modifier<T>[]
   } = {};
 
-  abstract evaluate() : T;
+  abstract evaluate(): T;
+  abstract modifiableByScalar(): boolean;
   addModifier(mod: Modifier<T>): void {
     const name = mod.constructor.name,
       current = this.modifiers[name];
@@ -32,7 +33,7 @@ export abstract class DerivedValue<T> {
       mods = this.modifiers[name];
     if(mods) {
       const index = mods.indexOf(mod);
-      if (index) {
+      if (index >= 0) {
         mods.splice(index, 1);
       }
     }

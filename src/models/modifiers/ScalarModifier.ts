@@ -1,8 +1,12 @@
 import { FlatModifier } from "@/models/modifiers/FlatModifier";
 import { IncreaseModifier } from "@/models/modifiers/IncreaseModifier";
 import { Modifier } from "@/models/modifiers/Modifier";
+import { DerivedValue } from "@/models/values/DerivedValue";
 
 export abstract class ScalarModifier extends Modifier<number> {
+  public appliesTo(val: DerivedValue<any>): boolean {
+    return val.modifiableByScalar();
+  }
   static combine(mods: ScalarModifier[]): number {
       return mods.reduce((acc, cur) => {
         return acc + cur.val;
